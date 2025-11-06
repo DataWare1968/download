@@ -23,6 +23,7 @@
     text-decoration: none;
     font-weight: bold;
     transition: background 0.3s;
+    cursor: pointer;
   }
   a.download-btn:hover {
     background: #005fa3;
@@ -33,11 +34,8 @@
   <h1>تحميل برنامج DATAWARE</h1>
   <p>اضغط الزر أدناه لبدء تحميل النسخة المضغوطة (RAR) من البرنامج.</p>
 
-  <!-- رابط Dropbox المباشر -->
-  <a href="https://www.dropbox.com/scl/fi/f0z7fs6lhb53ce9x5idz4/DATAWARE.rar?rlkey=dn0c3rik0mt8wt6xdygd0g79b&st=chjj0wxu&dl=1"
-     class="download-btn">
-     ⬇️ تحميل البرنامج (DATAWARE.rar)
-  </a>
+  <!-- الزر -->
+  <a id="downloadBtn" class="download-btn">⬇️ تحميل البرنامج (DATAWARE.rar)</a>
 
   <p style="margin-top:20px; color:#555;">
     الملف مضغوط بصيغة RAR، يمكنك فك الضغط بسهولة باستخدام <b>WinRAR</b> أو <b>7-Zip</b>.
@@ -45,5 +43,17 @@
     ⚠️ ملاحظة: قد يعرض Windows تحذيرًا عند تشغيل البرنامج، وهو أمر طبيعي.
     يمكنك الضغط على <b>"مزيد من المعلومات"</b> ثم <b>"تشغيل على أي حال"</b>.
   </p>
+
+  <script>
+    document.getElementById("downloadBtn").addEventListener("click", function() {
+      // إنشاء عنصر <a> مؤقت لبدء التحميل
+      const link = document.createElement("a");
+      link.href = "https://www.dropbox.com/scl/fi/f0z7fs6lhb53ce9x5idz4/DATAWARE.rar?rlkey=dn0c3rik0mt8wt6xdygd0g79b&st=chjj0wxu&dl=1";
+      link.download = "DATAWARE.rar"; // يُجبر المتصفح على عرض "Save As"
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  </script>
 </body>
 </html>
